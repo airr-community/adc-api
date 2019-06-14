@@ -15,7 +15,7 @@ checking, and optimization. Therefore, this implementation should not
 be directly used for a production system. However, this implementation
 may be a good starting point.
 
-##Components
+## Components
 
 The ADC API reference implementation is currently composed of 3 separate components:
 
@@ -23,12 +23,12 @@ The ADC API reference implementation is currently composed of 3 separate compone
  * [adc-api-js-mongodb](https://github.com/airr-community/adc-api-js-mongodb): JavaScript implementation of ADC API service for MongoDB.
  * [adc-api](https://github.com/airr-community/adc-api): Compose the other components together into a complete functional repository.
 
-##Configuration Procedure
+## Configuration Procedure
 
 All configuration procedures are the same for dockerized and
 non-dockerized versions of these apps.
 
-**Configuring adc-api-mongodb-repository**
+** Configuring adc-api-mongodb-repository **
 
 The default docker-compose setup starts mongo with authentication on,
 and no users exists in the default image. To setup the database, need
@@ -66,7 +66,7 @@ docker rm adc-api-mongo
 # Edit docker-compose.yml and put in mapping of mongo data directory
 ```
 
-**Configuring adc-api-js-mongodb**
+** Configuring adc-api-js-mongodb **
 
 There is one configuration file that needs to be set up to run the
 API. It can be copied from its default template.
@@ -77,7 +77,7 @@ cp .env.defaults .env
 emacs .env
 ```
 
-**Configuring systemd**
+** Configuring systemd **
 
 You can set up a systemd service file on your host machine in order to
 have the service automatically restart when the host machine reboots.
@@ -92,19 +92,19 @@ sudo systemctl enable docker
 sudo systemctl enable adc-api
 ```
 
-##Deployment Procedure
+## Deployment Procedure
 
-###SSL
+### SSL
 
 VDJServer-Repository does not handle SSL certificates directly, and is
 currently configured to run HTTP internally on port 8080. It must be
 deployed behind a reverse proxy in order to allow SSL connections.
 
-###Dockerized instances
+### Dockerized instances
 
-**Docker Compose Files**
+** Docker Compose Files **
 
-##Accessing the Repository
+## Accessing the Repository
 
 For general users, the API is likely accessed with a GUI that hides
 the technical details of communicating with the REST API. However, it
@@ -127,7 +127,7 @@ $ curl 'http://localhost:8080/airr/v1/info'
 {"name":"adc-api-js-mongodb","description":"AIRR Data Commons API","version":"0.1.0"}
 ```
 
-##Development Setup
+## Development Setup
 
 You will need to clone down the parent project and all submodules in order to set up a local instance of vdjserver.
 
