@@ -28,7 +28,7 @@ The ADC API reference implementation is currently composed of 3 separate compone
 All configuration procedures are the same for dockerized and
 non-dockerized versions of these apps.
 
-** Configuring adc-api-mongodb-repository **
+**Configuring adc-api-mongodb-repository**
 
 The default docker-compose setup starts mongo with authentication on,
 and no users exists in the default image. To setup the database, need
@@ -66,7 +66,7 @@ docker rm adc-api-mongo
 # Edit docker-compose.yml and put in mapping of mongo data directory
 ```
 
-** Configuring adc-api-js-mongodb **
+**Configuring adc-api-js-mongodb**
 
 There is one configuration file that needs to be set up to run the
 API. It can be copied from its default template.
@@ -77,7 +77,7 @@ cp .env.defaults .env
 emacs .env
 ```
 
-** Configuring systemd **
+**Configuring systemd**
 
 You can set up a systemd service file on your host machine in order to
 have the service automatically restart when the host machine reboots.
@@ -102,7 +102,7 @@ deployed behind a reverse proxy in order to allow SSL connections.
 
 ### Dockerized instances
 
-** Docker Compose Files **
+**Docker Compose Files**
 
 ## Accessing the Repository
 
@@ -111,7 +111,7 @@ the technical details of communicating with the REST API. However, it
 is useful to contact manually the API using the `curl` command to
 verify that the service is operational.
 
-** AIRR Data Commons API **
+**AIRR Data Commons API**
 
 The top level entrypoint for the API will return a simple success status heartbeat.
 
