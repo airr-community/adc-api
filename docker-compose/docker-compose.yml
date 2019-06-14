@@ -1,0 +1,30 @@
+# ADC API Docker Orchestration
+
+version: '2'
+
+services:
+    adc-api-mongo:
+        build: ./../adc-api-mongodb-repository
+        container_name: adc-api-mongo
+        expose:
+            - "27017"
+        image: airrc/adc-api-mongodb-repository
+        volumes:
+            - /host_path/mongodb:/data/db
+        networks:
+            - default
+        command: mongod --auth
+
+    adc-api:
+        build: ./../adc-api-js-mongodb
+        container_name: adc-api
+        env_file: ./../adc-api-js-mongodb/.env
+        ports:
+            - "8080:8080"
+        image: airrc/adc-api-js-mongodb
+        networks:
+            - default
+
+networks:
+    default:
+        driver: bridge

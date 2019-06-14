@@ -1,0 +1,6 @@
+[submodule "adc-api-mongodb-repository"]
+	path = adc-api-mongodb-repository
+	url = https://github.com/airr-community/adc-api-mongodb-repository.git
+[submodule "adc-api-js-mongodb"]
+	path = adc-api-js-mongodb
+	url = https://github.com/airr-community/adc-api-js-mongodb.git

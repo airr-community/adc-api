@@ -1,0 +1,15 @@
+[Unit]
+Description=AIRR Data Commons API
+Documentation=https://github.com/airr-community/adc-api
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=/usr/local/bin/docker-compose -f /path/adc-api/docker-compose/docker-compose.yml stop
+ExecStartPre=/usr/local/bin/docker-compose -f /path/adc-api/docker-compose/docker-compose.yml rm --force
+ExecStart=/usr/local/bin/docker-compose -f /path/adc-api/docker-compose/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f /path/adc-api/docker-compose/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target
