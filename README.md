@@ -41,14 +41,14 @@ Clone down the parent project and all submodules.
 
 ```
 - Clone project
-$ git clone https://github.com/airr-community/adc-api.git
+git clone https://github.com/airr-community/adc-api.git
 
 cd adc-api
 
 - Clone submodules
-$ git submodule update --init
-$ git submodule foreach git checkout master
-$ git submodule foreach git pull
+git submodule update --init
+git submodule foreach git checkout master
+git submodule foreach git pull
 
 - Follow Configuration Procedure below
 ```
@@ -188,14 +188,14 @@ verify that the service is operational.
 The top level entrypoint for the API will return a simple success status heartbeat.
 
 ```
-$ curl 'http://localhost:8080/airr/v1'
+curl 'http://localhost:8080/airr/v1'
 {"result":"success"}
 ```
 
 The info entrypoint will return version and other info about the service.
 
 ```
-$ curl 'http://localhost:8080/airr/v1/info'
+curl 'http://localhost:8080/airr/v1/info'
 {"name":"adc-api-js-mongodb","description":"AIRR Data Commons API","version":"0.1.0"}
 ```
 
