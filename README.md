@@ -88,14 +88,14 @@ emacs dbsetup.js
 # Replace /disk/mongodb with directory on host machine to store the database files
 docker run -v /disk/mongodb:/data/db -v $PWD:/dbsetup --name adc-api-mongo airrc/adc-api-mongodb-repository
 
+# Open another terminal window to run these commands
+
 # Run setup script
 docker exec -it adc-api-mongo mongo admin /dbsetup/dbsetup.js
 
 # Stop mongo and get rid of name
 docker stop adc-api-mongo
 docker rm adc-api-mongo
-
-# Edit docker-compose.yml and put in mapping of mongo data directory
 ```
 
 **Configuring JavaScript API service**
@@ -115,14 +115,17 @@ emacs .env
 **Build the Docker Images**
 
 The adc-api has the docker-compose configuration file which composes
-the components together into a working service.
+the components together into a working service. You need to edit the
+docker-compose.yml file and change "host_path/mongodb" to point to
+the host machine path were the database files are stored.
 
 ```
 cd adc-api/docker-compose
+emacs docker-compose.yml
 docker-compose build
 ```
 
-**Configuring systemd (Optional)**
+**Configuring systemd (Optional for Linux/GNU systems)**
 
 You can set up a systemd service file on your host machine in order to
 have the service automatically restart when the host machine
