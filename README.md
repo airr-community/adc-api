@@ -116,12 +116,15 @@ emacs .env
 
 The adc-api has the docker-compose configuration file which composes
 the components together into a working service. You need to edit the
-docker-compose.yml file and change "host_path/mongodb" to point to
+docker-compose.yml file and change "/host_path/mongodb" to point to
 the host machine path were the database files are stored.
 
 ```
-cd adc-api/docker-compose
+# Change path to database files
+cd docker-compose
 emacs docker-compose.yml
+
+# Build all the images
 docker-compose build
 ```
 
@@ -151,6 +154,16 @@ sudo systemctl enable adc-api
 VDJServer-Repository does not handle SSL certificates directly, and is
 currently configured to run HTTP internally on port 8080. It should be
 deployed behind a reverse proxy in order to allow SSL connections.
+
+**Running behind an HTTP/HTTPS Proxy**
+
+Currently the JavaScript API service will not work behind an
+HTTP/HTTPS proxy. When the ADC API YAML file is loaded, there are $ref
+references to the AIRR schema objects using HTTPS and it will attempt
+resolve them by attempting to loading the URL. This will likely fail
+because it doesn't know to use the proxy. There is a "hack" to get it
+to work but it requires modifying the ADC API YAML file as well as
+modifying the JavaScript API code.
 
 **Starting and Stopping the Service**
 
