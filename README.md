@@ -37,20 +37,17 @@ files need to be defined with appropriate values. These configuration
 files are external to the docker images (they may contain username,
 passwords and other system sensitive information).
 
-Clone down the parent project and all submodules.
+Clone down the parent project and all submodules then follow the
+configuration procedures below.
 
 ```
-- Clone project
+# Clone project
 git clone https://github.com/airr-community/adc-api.git
 
 cd adc-api
 
-- Clone submodules
-git submodule update --init
-git submodule foreach git checkout master
-git submodule foreach git pull
-
-- Follow Configuration Procedure below
+# Init submodules
+git submodule update --init --recursive
 ```
 
 ## Configuration Procedure
@@ -120,7 +117,8 @@ The adc-api has the docker-compose configuration file which composes
 the components together into a working service.
 
 ```
-cd 
+cd adc-api/docker-compose
+docker-compose build
 ```
 
 **Configuring systemd (Optional)**
