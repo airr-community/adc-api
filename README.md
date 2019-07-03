@@ -85,7 +85,8 @@ cp dbsetup.defaults dbsetup.js
 emacs dbsetup.js
 
 # Start up temporary mongo service, note mapping of mongo data directory and dbsetup
-docker run -v /disk/mongodb:/data/db -v $PWD:/dbsetup --name adc-api-mongo airrc/adc-api-mongo-repository
+# Replace /disk/mongodb with directory on host machine to store the database files
+docker run -v /disk/mongodb:/data/db -v $PWD:/dbsetup --name adc-api-mongo airrc/adc-api-mongodb-repository
 
 # Run setup script
 docker exec -it adc-api-mongo mongo admin /dbsetup/dbsetup.js
